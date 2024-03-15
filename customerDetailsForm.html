@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Guest Account Details">
+        <div class="slds-p-around_medium">
+            <template if:true={accountFields}>
+                <div>
+                    <lightning-input label="First Name" value={accountFields.First_Name__c} onchange={handleInputChange} name="First_Name__c" readonly></lightning-input>
+                    <lightning-input label="Last Name" value={accountFields.Last_Name__c} onchange={handleInputChange} name="Last_Name__c" readonly></lightning-input>
+                    <lightning-input label="Phone" value={accountFields.Phone} onchange={handleInputChange} name="Phone"></lightning-input>
+                    <lightning-input label="Email" type="email" value={accountFields.Email__c} onchange={handleInputChange} name="Email__c" readonly></lightning-input>
+                    <lightning-input label="Birth Date" value={accountFields.Date_of_Birth__c} onchange={handleInputChange} name="Date_of_Birth__c"></lightning-input>
+                    <lightning-input label="Shoe Size" value={accountFields.Shoes_size__c} onchange={handleInputChange} name="Shoes_size__c"></lightning-input>
+                    <!--<lightning-input label="T-Shirt Size" value={accountFields.T_shirt_size__c} onchange={handleInputChange} name="T_shirt_size__c"></lightning-input>-->
+                    <lightning-combobox
+                        label="T-shirt Size"
+                        name="T_shirt_size__c"
+                        value={accountFields.T_shirt_size__c}
+                        options={tshirtSizeOptions}
+                        onchange={handleInputChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-m-top_medium">
+                    <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+                </div>
+            </template>
+            <template if:false={accountFields}>
+                <div>No account details found.</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
